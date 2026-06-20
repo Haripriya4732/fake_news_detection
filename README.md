@@ -66,7 +66,7 @@ Analysis           Scoring
 
 ---
 
-# 📂 Project Structure
+# Project Structure
 
 ```text
 fake_news_detection/
@@ -102,7 +102,7 @@ fake_news_detection/
 
 ---
 
-# 📊 Datasets Used
+# Datasets Used
 
 | Dataset            | Description                                      |
 | ------------------ | ------------------------------------------------ |
