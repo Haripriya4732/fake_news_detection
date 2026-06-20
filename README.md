@@ -160,7 +160,7 @@ Total Combined Samples: **116,482+**
 
 ---
 
-# 🔧 Installation
+# Installation
 
 ## Step 1: Clone Repository
 
@@ -281,7 +281,7 @@ Binary Classification:
 
 ---
 
-# 📈 Evaluation Metrics
+# Evaluation Metrics
 
 The model is evaluated using:
 
