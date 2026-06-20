@@ -122,7 +122,7 @@ Total Combined Samples: **116,482+**
 
 ---
 
-# ⚙️ Technologies Used
+# Technologies Used
 
 ### Programming Language
 
@@ -165,8 +165,7 @@ Total Combined Samples: **116,482+**
 ## Step 1: Clone Repository
 
 ```bash
-git clone https://github.com/yourusername/fake-news-detection.git
-
+git clone https://github.com/Haripriya4732/fake_news_detection
 cd fake-news-detection
 ```
 
