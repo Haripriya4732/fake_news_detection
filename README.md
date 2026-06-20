@@ -1,22 +1,86 @@
 # Fake News Detection Using Transformer-Based NLP with Source Credibility and Sentiment Fusion
 
-## About
-AI-powered fake news detector combining BERT/RoBERTa, source credibility scoring, and sentiment analysis for accurate misinformation classification.
+## Overview
+
+This project presents an advanced **Fake News Detection System** that combines **Transformer-based Natural Language Processing (NLP)** with **Source Credibility Analysis** and **Sentiment Fusion** to accurately classify news articles as **Fake** or **Real**.
+
+Traditional fake news detection approaches rely only on textual content. This framework enhances prediction reliability by integrating:
+
+* Transformer-based contextual text understanding (BERT/RoBERTa)
+* Source credibility scoring
+* Sentiment analysis
+* Explainable AI techniques (SHAP & LIME)
+
+The system provides interpretable predictions and supports real-world misinformation detection applications.
 
 ---
 
-## Project Structure
+# Key Features
 
+Transformer-Based News Classification (BERT / RoBERTa)
+
+Source Credibility Scoring Module
+
+Sentiment Analysis using VADER and TextBlob
+
+Feature Fusion Framework
+
+Explainable AI (SHAP + LIME)
+
+Word Cloud and Frequency Analysis
+
+Model Performance Visualization
+
+Interactive News Testing Interface
+
+Automatic Model Saving and Loading
+
+---
+
+# Project Architecture
+
+```text
+News Article
+      │
+      ▼
+Text Preprocessing
+      │
+      ▼
+Transformer Encoder
+(BERT / RoBERTa)
+      │
+      ├───────────────┐
+      ▼               ▼
+Sentiment       Source Credibility
+Analysis           Scoring
+      │               │
+      └───────┬───────┘
+              ▼
+      Feature Fusion Layer
+              ▼
+      Fake / Real Prediction
+              ▼
+      Explainability Module
+       (SHAP + LIME)
 ```
+
+---
+
+# 📂 Project Structure
+
+```text
 fake_news_detection/
+│
 ├── data/
 │   ├── FakeNewsNet.csv
 │   ├── WELFake_Dataset.csv
 │   └── politifact_factcheck_data.json
+│
 ├── outputs/
 │   ├── models/
 │   ├── plots/
 │   └── results/
+│
 ├── src/
 │   ├── config.py
 │   ├── data_loader.py
@@ -28,85 +92,318 @@ fake_news_detection/
 │   ├── evaluate.py
 │   ├── explainability.py
 │   └── word_analysis.py
+│
 ├── main.py
 ├── test_interactive.py
 ├── run.bat
-└── requirements.txt
+├── requirements.txt
+└── README.md
 ```
 
 ---
 
-## How to Run (Step by Step)
+# 📊 Datasets Used
 
-### Step 1 — Open Anaconda Prompt
-Search **Anaconda Prompt** in the Windows Start menu and open it.
+| Dataset            | Description                                      |
+| ------------------ | ------------------------------------------------ |
+| WELFake Dataset    | Large-scale fake and real news dataset           |
+| FakeNewsNet        | News articles with social engagement information |
+| PolitiFact Dataset | Fact-checking dataset with verdict labels        |
 
-### Step 2 — Activate Your Environment
+### Dataset Statistics
+
+| Dataset     | Records |
+| ----------- | ------- |
+| WELFake     | 72,134  |
+| FakeNewsNet | 23,196  |
+| PolitiFact  | 21,152  |
+
+Total Combined Samples: **116,482+**
+
+---
+
+# ⚙️ Technologies Used
+
+### Programming Language
+
+* Python 3.10+
+
+### Deep Learning Frameworks
+
+* PyTorch
+* Hugging Face Transformers
+
+### NLP Libraries
+
+* BERT
+* RoBERTa
+* NLTK
+* TextBlob
+* VADER Sentiment
+
+### Explainable AI
+
+* SHAP
+* LIME
+
+### Data Processing
+
+* Pandas
+* NumPy
+* Scikit-Learn
+
+### Visualization
+
+* Matplotlib
+* Seaborn
+* WordCloud
+
+---
+
+# 🔧 Installation
+
+## Step 1: Clone Repository
+
 ```bash
-conda activate your_env_name
-```
-> Skip this if you are using the base environment.
+git clone https://github.com/yourusername/fake-news-detection.git
 
-### Step 3 — Go to Project Folder
+cd fake-news-detection
+```
+
+## Step 2: Create Environment
+
 ```bash
-cd C:\Users\krake\Downloads\fake_news\fake_news_detection
+conda create -n fake_news python=3.10
+
+conda activate fake_news
 ```
 
-### Step 4 — Install All Dependencies
+## Step 3: Install Dependencies
+
 ```bash
 pip install -r requirements.txt
 ```
-> Only needed once. This installs torch, transformers, shap, lime, etc.
 
-### Step 5 — Train the Model
+---
+
+# Running the Project
+
+## Train the Model
+
 ```bash
 python main.py
 ```
-> This will load all 3 datasets, build features, train the model, save it,
-> evaluate it, and generate all plots inside the `outputs/` folder.
 
-### Step 6 — Test Interactively
+This process will:
+
+* Load all datasets
+* Perform preprocessing
+* Generate sentiment features
+* Calculate source credibility scores
+* Train the transformer model
+* Evaluate performance
+* Save outputs automatically
+
+---
+
+## Interactive Testing
+
 ```bash
 python test_interactive.py
 ```
-> After this runs, you will see a menu:
-> - Option 1 → Type your own news text and get a prediction
-> - Option 2 → Pick random samples from the dataset and test
-> - Option 3 → Quit
+
+Options:
+
+```text
+1. Enter custom news text
+2. Test random samples
+3. Exit
+```
 
 ---
 
-## Datasets
+# Methodology
 
-| Dataset | Rows | Label |
-|---|---|---|
-| WELFake | 72,134 | 1=Fake, 0=Real |
-| FakeNewsNet | 23,196 | 1=Fake, 0=Real |
-| PolitiFact | 21,152 | Verdict-based |
+### 1. Data Collection
+
+* WELFake Dataset
+* FakeNewsNet Dataset
+* PolitiFact Dataset
+
+### 2. Text Preprocessing
+
+* Lowercasing
+* URL removal
+* Special character cleaning
+* Tokenization
+* Stopword removal
+
+### 3. Feature Extraction
+
+#### Transformer Features
+
+* BERT Embeddings
+* RoBERTa Embeddings
+
+#### Sentiment Features
+
+* Positive Score
+* Negative Score
+* Neutral Score
+* Compound Score
+
+#### Source Features
+
+* Domain Trust Score
+* Historical Reliability
+* Credibility Ranking
+
+### 4. Feature Fusion
+
+Combined Feature Vector:
+
+```text
+Fused Features =
+Transformer Features
++
+Sentiment Features
++
+Credibility Features
+```
+
+### 5. Classification
+
+Binary Classification:
+
+```text
+0 → Real News
+1 → Fake News
+```
 
 ---
 
-## Features
+# 📈 Evaluation Metrics
 
-- RoBERTa / BERT transformer backbone
-- Source credibility trust scoring
-- VADER + TextBlob sentiment analysis
-- Adaptive feature weighting and fusion
-- SHAP and LIME explainability
-- Word cloud and frequency analysis
-- Model saving and interactive testing
+The model is evaluated using:
+
+* Accuracy
+* Precision
+* Recall
+* F1 Score
+* ROC-AUC Score
+* Confusion Matrix
 
 ---
 
-## Outputs Generated
+# Generated Outputs
 
-| File | Description |
-|---|---|
-| `outputs/models/best_model.pt` | Best saved model |
-| `outputs/plots/training_curves.png` | Loss and accuracy graphs |
-| `outputs/plots/confusion_matrix.png` | Confusion matrix |
-| `outputs/plots/roc_curve.png` | ROC curve |
-| `outputs/plots/wordclouds.png` | Fake vs Real word clouds |
-| `outputs/plots/lime_sample_*.png` | LIME explanations |
-| `outputs/plots/shap_summary.png` | SHAP summary |
-| `outputs/results/classification_report.txt` | Precision, Recall, F1 |
+## Saved Model
+
+```text
+outputs/models/best_model.pt
+```
+
+---
+
+## Visualization Outputs
+
+```text
+outputs/plots/training_curves.png
+outputs/plots/confusion_matrix.png
+outputs/plots/roc_curve.png
+outputs/plots/wordclouds.png
+outputs/plots/shap_summary.png
+outputs/plots/lime_sample_*.png
+```
+
+---
+
+## Evaluation Results
+
+```text
+outputs/results/classification_report.txt
+```
+
+Contains:
+
+* Accuracy
+* Precision
+* Recall
+* F1 Score
+* ROC-AUC
+
+---
+
+# Explainable AI
+
+The framework incorporates:
+
+### SHAP
+
+Provides:
+
+* Global feature importance
+* Local prediction explanations
+
+### LIME
+
+Provides:
+
+* Instance-level explanations
+* Highlighted influential words
+
+This improves model transparency and trustworthiness.
+
+---
+
+# Sample Prediction
+
+### Input
+
+```text
+Scientists discover miracle cure that guarantees immortality.
+```
+
+### Output
+
+```text
+Prediction : Fake News
+
+Confidence : 97.6%
+
+Sentiment : Highly Positive
+
+Source Credibility : Low
+```
+
+---
+
+# Applications
+
+* News Verification Platforms
+* Social Media Monitoring
+* Fact Checking Systems
+* Journalism Support Tools
+* Misinformation Detection
+* Content Moderation
+
+---
+
+# Future Enhancements
+
+* Multilingual Fake News Detection
+* Real-Time Web Scraping
+* Social Media Stream Analysis
+* Knowledge Graph Integration
+* Graph Neural Networks
+* Federated Learning Deployment
+* Web Dashboard Deployment
+
+---
+
+
+# License
+
+This project is licensed under the MIT License.
+
+Feel free to use, modify, and distribute this project for academic and research purposes.
